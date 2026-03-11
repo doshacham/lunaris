@@ -1,0 +1,15 @@
+# Copyright (c) 2026 Dor Shacham <dorishacham52@gmail.com>. All rights reserved.
+# SPDX-License-Identifier: Proprietary
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - "dependencies"
+      - "automated"

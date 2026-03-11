@@ -1,0 +1,41 @@
+# Copyright (c) 2026 Dor Shacham <dorishacham52@gmail.com>. All rights reserved.
+# SPDX-License-Identifier: Proprietary
+
+name: Bug Report
+description: Report a bug
+labels: ["bug", "triage"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug
+      placeholder: Describe the issue
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce this?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: false
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, browser, version, etc.
+      placeholder: "e.g. Windows 11, Chrome 120"
+    validations:
+      required: false

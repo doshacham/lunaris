@@ -1,0 +1,53 @@
+# Copyright (c) 2026 Dor Shacham <dorishacham52@gmail.com>. All rights reserved.
+# SPDX-License-Identifier: Proprietary
+
+name: CI
+
+on:
+  push:
+    branches: [main, master, dev]
+  pull_request:
+    branches: [main, master, dev]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for merge conflicts markers
+        run: |
+          if grep -rn '<<<<<<< \|======= \|>>>>>>> ' --include='*.ts' --include='*.js' --include='*.json' --include='*.yml' --include='*.yaml' . 2>/dev/null; then
+            echo "::error::Merge conflict markers found!"
+            exit 1
+          fi
+
+      - name: Validate YAML files
+        run: |
+          for f in $(find . -name '*.yml' -o -name '*.yaml' | head -50); do
+            python3 -c "import yaml; yaml.safe_load(open('$f'))" 2>/dev/null || echo "::warning::Invalid YAML: $f"
+          done
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Placeholder build step
+        run: echo "No build configured yet — add your build commands here"
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Placeholder test step
+        run: echo "No tests configured yet — add your test commands here"

@@ -1,0 +1,30 @@
+# Copyright (c) 2026 Dor Shacham <dorishacham52@gmail.com>. All rights reserved.
+# SPDX-License-Identifier: Proprietary
+
+name: Feature Request
+description: Suggest a new feature
+labels: ["feature", "triage"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What do you want to add?
+      placeholder: A clear description of the feature
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this needed?
+      placeholder: What problem does this solve?
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you've thought about?
+    validations:
+      required: false
